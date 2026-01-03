@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="专业肺结节倍增时间计算器，支持直径法和体积法。输入两次CT检查数据，自动计算倍增时间（VDT），辅助评估肺结节良恶性风险。由“谭谈肺结节”提供。">
+    <meta name="keywords" content="肺结节,倍增时间,VDT,肺结节计算器,肺癌筛查,肿瘤生长速度,肺结节良恶性,谭谈肺结节,CT影像评估">
+    <meta name="author" content="谭谈肺结节">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="肺结节倍增时间计算器 - 谭谈肺结节">
+    <meta property="og:description" content="在线计算肺结节倍增时间，辅助判断结节良恶性。支持简单直径法和三维体积法，提供临床意义解读。">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="肺结节倍增时间计算器 - 谭谈肺结节">
+    <meta name="twitter:description" content="在线计算肺结节倍增时间，辅助判断结节良恶性。支持简单直径法和三维体积法，提供临床意义解读。">
+
+    <title>肺结节倍增时间计算器 - 谭谈肺结节</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <h1>“谭谈肺结节”<br>肺结节倍增时间计算器</h1>
+        <p class="subtitle">根据两次CT检查的结节尺寸，计算体积倍增时间，辅助临床评估</p>
+    </header>
+    
+    <div class="container">
+        <section class="input-section">
+            <h2 class="section-title"><span class="icon icon-calendar"></span>输入检查数据</h2>
+            
+            <div class="method-selector">
+                <div class="method-tab active" data-method="simple">简单直径法</div>
+                <div class="method-tab" data-method="advanced">三维体积法</div>
+            </div>
+            
+            <form id="calcForm">
+                <!-- 简单直径法 -->
+                <div id="simple-method" class="method-content active">
+                    <div class="form-group">
+                        <label for="first-diameter">第一次检查结节直径 (mm)</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="first-diameter" step="0.1" min="0.1" value="5.0" required>
+                            <span class="unit">毫米 (mm)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="second-diameter">第二次检查结节直径 (mm)</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="second-diameter" step="0.1" min="0.1" value="6.0" required>
+                            <span class="unit">毫米 (mm)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        DT = [ln(2) × t] / [3 × ln(d₂/d₁)]
+                    </div>
+                </div>
+                
+                <!-- 三维体积法 -->
+                <div id="advanced-method" class="method-content">
+                    <div class="form-group">
+                        <label>第一次检查结节尺寸 (mm)</label>
+                        <div class="dimension-inputs">
+                            <div>
+                                <label for="first-length">长度</label>
+                                <input type="number" id="first-length" step="0.1" min="0.1" value="6.0" required>
+                            </div>
+                            <div>
+                                <label for="first-width">宽度</label>
+                                <input type="number" id="first-width" step="0.1" min="0.1" value="5.0" required>
+                            </div>
+                            <div>
+                                <label for="first-height">高度</label>
+                                <input type="number" id="first-height" step="0.1" min="0.1" value="5.0" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>第二次检查结节尺寸 (mm)</label>
+                        <div class="dimension-inputs">
+                            <div>
+                                <label for="second-length">长度</label>
+                                <input type="number" id="second-length" step="0.1" min="0.1" value="7.0" required>
+                            </div>
+                            <div>
+                                <label for="second-width">宽度</label>
+                                <input type="number" id="second-width" step="0.1" min="0.1" value="6.0" required>
+                            </div>
+                            <div>
+                                <label for="second-height">高度</label>
+                                <input type="number" id="second-height" step="0.1" min="0.1" value="6.0" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="formula">
+                        V = (π/6) × 长 × 宽 × 高<br>
+                        DT = [ln(2) × t] / ln(V₂/V₁)
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>检查时间间隔</label>
+                    <div class="date-inputs">
+                        <div>
+                            <label for="first-date">第一次检查日期</label>
+                            <input type="date" id="first-date" required>
+                        </div>
+                        <div>
+                            <label for="second-date">第二次检查日期</label>
+                            <input type="date" id="second-date" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="button" id="calculateBtn" class="btn">计算倍增时间</button>
+                
+                <div class="warning">
+                    <strong>免责声明：</strong> 本计算器仅用于医学参考，不能替代专业医疗诊断。所有结果应由放射科医生或临床医生结合完整临床资料进行解读。
+                </div>
+            </form>
+        </section>
+        
+        <section class="result-section">
+            <h2 class="section-title"><span class="icon icon-calc"></span>计算结果</h2>
+            
+            <div id="result-container">
+                <div class="result-box">
+                    <div class="result-title">肺结节倍增时间</div>
+                    <div id="result-value" class="result-value">-- 天</div>
+                    <div id="result-description">输入数据后点击"计算倍增时间"按钮查看结果</div>
+                </div>
+                
+                <div class="calculation-steps">
+                    <h3>计算步骤</h3>
+                    <div id="calculation-steps">等待计算...</div>
+                </div>
+                
+                <div class="interpretation">
+                    <h3><span class="icon icon-info"></span>临床意义解读</h3>
+                    <p id="interpretation-text">根据倍增时间结果，这里将显示临床意义解读。</p>
+                    
+                    <table class="clinical-table">
+                        <thead>
+                            <tr>
+                                <th>倍增时间 (天)</th>
+                                <th>临床意义</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>&lt; 30</td>
+                                <td>通常提示感染、炎症或非肿瘤性过程</td>
+                            </tr>
+                            <tr>
+                                <td>30 - 400</td>
+                                <td><strong>高度警惕恶性肿瘤</strong>的可能性（典型肺癌生长范围）</td>
+                            </tr>
+                            <tr>
+                                <td>400 - 600</td>
+                                <td>"灰色地带"，需结合结节形态和患者风险因素综合判断</td>
+                            </tr>
+                            <tr>
+                                <td>&gt; 600 或长期稳定</td>
+                                <td>强烈提示良性病变（如肉芽肿、错构瘤等）</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="note">
+                    <p><strong>重要说明：</strong> 肺结节倍增时间计算基于结节为理想球体或椭球体的假设。实际临床中，结节形态可能不规则，且CT测量存在误差。微小变化（如5mm到6mm）可能就在测量误差范围内，需谨慎解读。</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <script src="index.js"></script>
+    </script>
+</body>
+</html>

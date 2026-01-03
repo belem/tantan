@@ -1,0 +1,280 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+}
+
+body {
+    background-color: #f5f9fc;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #dce6f0;
+}
+
+h1 {
+    color: #2c5fa5;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.input-section, .result-section {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 25px;
+    flex: 1;
+    min-width: 300px;
+}
+
+.section-title {
+    color: #2c5fa5;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e8f0fe;
+    display: flex;
+    align-items: center;
+}
+
+.section-title i {
+    margin-right: 10px;
+    font-size: 1.3rem;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #444;
+}
+
+.input-with-unit {
+    display: flex;
+    align-items: center;
+}
+
+input[type="number"], select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input[type="number"]:focus, select:focus {
+    outline: none;
+    border-color: #2c5fa5;
+    box-shadow: 0 0 0 2px rgba(44, 95, 165, 0.1);
+}
+
+.unit {
+    margin-left: 10px;
+    color: #666;
+    white-space: nowrap;
+}
+
+.dimension-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+}
+
+.date-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.method-selector {
+    display: flex;
+    margin-bottom: 20px;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.method-tab {
+    flex: 1;
+    text-align: center;
+    padding: 12px;
+    background-color: #f8fafc;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+}
+
+.method-tab.active {
+    background-color: #2c5fa5;
+    color: white;
+}
+
+.method-content {
+    display: none;
+}
+
+.method-content.active {
+    display: block;
+}
+
+.btn {
+    background-color: #2c5fa5;
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background-color: #234785;
+}
+
+.result-box {
+    background-color: #f8fafc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-left: 4px solid #2c5fa5;
+}
+
+.result-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #2c5fa5;
+}
+
+.result-value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 20px 0;
+    color: #2c5fa5;
+}
+
+.interpretation {
+    background-color: #f0f7ff;
+    padding: 18px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.interpretation h3 {
+    color: #2c5fa5;
+    margin-bottom: 10px;
+}
+
+.calculation-steps {
+    background-color: #f8fafc;
+    padding: 18px;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-family: monospace;
+    font-size: 15px;
+    overflow-x: auto;
+}
+
+.clinical-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.clinical-table th, .clinical-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.clinical-table th {
+    background-color: #f0f7ff;
+    color: #2c5fa5;
+    font-weight: 600;
+}
+
+.clinical-table tr:hover {
+    background-color: #f5f9ff;
+}
+
+.note {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.warning {
+    background-color: #fff8e1;
+    border-left: 4px solid #ffc107;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+
+.formula {
+    font-family: 'Cambria Math', serif;
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 15px 0;
+    padding: 15px;
+    background-color: #f8fafc;
+    border-radius: 6px;
+}
+
+@media (max-width: 768px) {
+    .dimension-inputs, .date-inputs {
+        grid-template-columns: 1fr;
+    }
+    .container {
+        flex-direction: column;
+    }
+}
+
+.icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+}
+
+.icon-calendar { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%232c5fa5"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>'); }
+.icon-calc { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%232c5fa5"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>'); }
+.icon-info { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%232c5fa5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>'); }
