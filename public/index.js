@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // 设置默认日期（当前日期和一年前）
     const today = new Date();
     const oneYearAgo = new Date(today);
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 方法切换
     const methodTabs = document.querySelectorAll('.method-tab');
     methodTabs.forEach(tab => {
-        tab.addEventListener('click', function() {
+        tab.addEventListener('click', function () {
             const method = this.getAttribute('data-method');
 
             // 更新标签状态
@@ -146,12 +146,12 @@ document.addEventListener('DOMContentLoaded', function() {
         let interpretation = '';
         if (doublingTime < 30) {
             interpretation = `该结节的倍增时间为${doublingTime.toFixed(1)}天，小于30天，通常提示感染、炎症或其他非肿瘤性过程。建议临床随访或进一步检查排除活动性炎症。`;
-        } else if (doublingTime >= 30 && doublingTime <= 400) {
-            interpretation = `该结节的倍增时间为${doublingTime.toFixed(1)}天，处于30-400天范围内，<strong>高度警惕恶性肿瘤的可能性</strong>。这是典型肺癌的生长速度范围，建议结合结节形态（分叶、毛刺等）和患者风险因素（吸烟史、家族史）综合评估，可能需要进一步检查或短期随访。`;
-        } else if (doublingTime > 400 && doublingTime <= 600) {
-            interpretation = `该结节的倍增时间为${doublingTime.toFixed(1)}天，处于400-600天的"灰色地带"。建议结合结节的形态学特征（边缘是否光滑、有无钙化等）和患者临床情况综合判断，按指南进行定期随访。`;
+        } else if (doublingTime >= 100 && doublingTime <= 300) {
+            interpretation = `该结节的倍增时间为${doublingTime.toFixed(1)}天，处于100-300天范围内，<strong>高度警惕恶性肿瘤的可能性</strong>。这是典型肺癌的生长速度范围，建议结合结节形态（分叶、毛刺等）和患者风险因素（吸烟史、家族史）综合评估，可能需要进一步检查或短期随访。`;
+        } else if (doublingTime > 200 && doublingTime <= 600) {
+            interpretation = `该结节的倍增时间为${doublingTime.toFixed(1)}天，结节大致处于微浸润或浸润性腺癌阶段。建议结合结节的形态学特征（边缘是否光滑、有无钙化等）和患者临床情况综合判断，按指南进行定期随访。`;
         } else {
-            interpretation = `该结节的倍增时间为${doublingTime.toFixed(1)}天，大于600天，强烈提示良性病变（如肉芽肿、错构瘤等）。大多数良性结节生长缓慢或长期稳定，可按常规随访计划进行。`;
+            interpretation = `该结节的倍增时间为${doublingTime.toFixed(1)}天，大于600天，倾向于良性或低度恶性（如贴壁生长型腺癌）。大多数此类结节生长缓慢或长期稳定，可按常规随访计划进行。`;
         }
 
         document.getElementById('interpretation-text').innerHTML = interpretation;

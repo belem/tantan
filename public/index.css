@@ -30,7 +30,7 @@ h1 {
 .subtitle {
     color: #666;
     font-size: 1.1rem;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 .container {
@@ -40,7 +40,8 @@ h1 {
     margin-bottom: 30px;
 }
 
-.input-section, .result-section {
+.input-section,
+.result-section {
     background-color: white;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -80,7 +81,8 @@ label {
     align-items: center;
 }
 
-input[type="number"], select {
+input[type="number"],
+select {
     width: 100%;
     padding: 12px 15px;
     border: 1px solid #cbd5e0;
@@ -89,7 +91,8 @@ input[type="number"], select {
     transition: border-color 0.3s;
 }
 
-input[type="number"]:focus, select:focus {
+input[type="number"]:focus,
+select:focus {
     outline: none;
     border-color: #2c5fa5;
     box-shadow: 0 0 0 2px rgba(44, 95, 165, 0.1);
@@ -213,7 +216,8 @@ input[type="number"]:focus, select:focus {
     margin-top: 15px;
 }
 
-.clinical-table th, .clinical-table td {
+.clinical-table th,
+.clinical-table td {
     padding: 12px 15px;
     text-align: left;
     border-bottom: 1px solid #ddd;
@@ -257,9 +261,12 @@ input[type="number"]:focus, select:focus {
 }
 
 @media (max-width: 768px) {
-    .dimension-inputs, .date-inputs {
+
+    .dimension-inputs,
+    .date-inputs {
         grid-template-columns: 1fr;
     }
+
     .container {
         flex-direction: column;
     }
@@ -275,6 +282,14 @@ input[type="number"]:focus, select:focus {
     vertical-align: middle;
 }
 
-.icon-calendar { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%232c5fa5"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>'); }
-.icon-calc { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%232c5fa5"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>'); }
-.icon-info { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%232c5fa5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>'); }
+.icon-calendar {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%232c5fa5"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>');
+}
+
+.icon-calc {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%232c5fa5"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>');
+}
+
+.icon-info {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%232c5fa5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>');
+}
