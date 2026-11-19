@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#2c5fa5">
+    <meta name="description" content="脂肪肝科普资料在线阅读，支持手机和电脑浏览、缩放与下载 PDF。">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="/zhifanggan/">
+    <title> 给肝脏装一把“脂肪秤” - 在线阅读</title>
+    <link rel="stylesheet" href="viewer.css">
+</head>
+
+<body>
+    <header class="toolbar">
+        <div class="brand">
+            <span class="brand-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path>
+                    <path d="M14 3v5h5"></path>
+                    <path d="M9 13h6M9 17h4"></path>
+                </svg>
+            </span>
+            <h1> 给肝脏装一把“脂肪秤”</h1>
+            <span class="brand-sub">在线阅读</span>
+        </div>
+
+        <div class="bar-tools">
+            <div class="group" role="group" aria-label="翻页">
+                <button type="button" class="tool-btn" id="prevPage" aria-label="上一页" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M15 18l-6-6 6-6"></path>
+                    </svg>
+                </button>
+                <span class="page-info" id="pageInfo" aria-live="polite">– / –</span>
+                <button type="button" class="tool-btn" id="nextPage" aria-label="下一页" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M9 18l6-6-6-6"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <span class="divider" aria-hidden="true"></span>
+
+            <div class="group" role="group" aria-label="缩放">
+                <button type="button" class="tool-btn" id="zoomOut" aria-label="缩小" disabled>−</button>
+                <span class="zoom-info" id="zoomInfo">100%</span>
+                <button type="button" class="tool-btn" id="zoomIn" aria-label="放大" disabled>+</button>
+                <button type="button" class="text-btn" id="zoomReset" disabled>适应宽度</button>
+            </div>
+
+            <a class="download-btn" href="zhifanggan.pdf" download="脂肪肝.pdf" aria-label="下载 PDF">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 3v12"></path>
+                    <path d="M7 11l5 5 5-5"></path>
+                    <path d="M4 20h16"></path>
+                </svg>
+                <span class="download-label">下载 PDF</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="viewer" id="viewer">
+        <div class="pages" id="pages"></div>
+
+        <div class="loading" id="loading">
+            <div class="spinner" aria-hidden="true"></div>
+            <p id="loadingText">正在加载 PDF…</p>
+            <p class="loading-progress" id="loadingProgress"></p>
+        </div>
+
+        <div class="error" id="error" hidden>
+            <p class="error-title">PDF 加载失败</p>
+            <p>你的浏览器可能不支持在线阅读，或网络暂时不可用。</p>
+            <a class="download-btn" href="zhifanggan.pdf" download="脂肪肝.pdf">下载 PDF 查看</a>
+        </div>
+    </main>
+
+    <noscript>
+        <div class="noscript">
+            需要启用 JavaScript 才能在线阅读，请<a href="zhifanggan.pdf">直接打开 PDF 文件</a>。
+        </div>
+    </noscript>
+
+    <script>
+        // 加载超过 12 秒仍未就绪时，提供直接打开 PDF 的备用入口
+        setTimeout(function () {
+            if (!window.__pdfViewerReady) {
+                var progress = document.getElementById('loadingProgress');
+                if (progress && !progress.textContent) {
+                    progress.innerHTML = '加载时间较长，可 <a href="zhifanggan.pdf">直接打开 PDF</a> 查看。';
+                }
+            }
+        }, 12000);
+    </script>
+    <script type="module" src="viewer.js"></script>
+</body>
+
+</html>
