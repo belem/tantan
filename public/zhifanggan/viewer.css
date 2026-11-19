@@ -1,0 +1,477 @@
+:root {
+    --blue: #2c5fa5;
+    --blue-dark: #234f8b;
+    --blue-soft: #eaf1fb;
+    --ink: #22344a;
+    --muted: #667c93;
+    --line: #d9e3ef;
+    --bg: #e8eef5;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+@supports (height: 100dvh) {
+
+    html,
+    body {
+        height: 100dvh;
+    }
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+:focus-visible {
+    outline: 2px solid #4d8bd8;
+    outline-offset: 2px;
+}
+
+/* ---------- 顶部工具栏 ---------- */
+
+.toolbar {
+    position: relative;
+    z-index: 10;
+    flex: 0 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 18px;
+    padding: calc(10px + env(safe-area-inset-top)) 18px 10px;
+    background: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid var(--line);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    backdrop-filter: saturate(180%) blur(12px);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.brand-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    color: #fff;
+    background: linear-gradient(135deg, #3a74c4, #2c5fa5);
+    box-shadow: 0 2px 6px rgba(44, 95, 165, 0.35);
+}
+
+.brand h1 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--blue);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.brand-sub {
+    flex: none;
+    font-size: 11px;
+    line-height: 1;
+    color: var(--blue);
+    background: var(--blue-soft);
+    border-radius: 999px;
+    padding: 5px 9px;
+}
+
+.bar-tools {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+}
+
+.group {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.divider {
+    width: 1px;
+    height: 20px;
+    background: var(--line);
+}
+
+.tool-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    background: #f1f5fa;
+    color: #3c5673;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+    touch-action: manipulation;
+}
+
+.tool-btn:hover:not(:disabled) {
+    background: #e2ebf6;
+    color: var(--blue);
+}
+
+.tool-btn:active:not(:disabled) {
+    transform: scale(0.94);
+}
+
+.tool-btn:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.tool-btn svg {
+    width: 19px;
+    height: 19px;
+}
+
+.page-info {
+    min-width: 66px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: #415a75;
+    font-variant-numeric: tabular-nums;
+}
+
+.zoom-info {
+    min-width: 50px;
+    text-align: center;
+    font-size: 12.5px;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+}
+
+.text-btn {
+    border: 0;
+    background: transparent;
+    color: var(--blue);
+    font-size: 13px;
+    font-family: inherit;
+    padding: 6px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.15s ease;
+    touch-action: manipulation;
+}
+
+.text-btn:hover:not(:disabled) {
+    background: var(--blue-soft);
+}
+
+.text-btn:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex: none;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: var(--blue);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(44, 95, 165, 0.28);
+    transition: background-color 0.15s ease, transform 0.1s ease;
+    touch-action: manipulation;
+}
+
+.download-btn:hover {
+    background: var(--blue-dark);
+}
+
+.download-btn:active {
+    transform: scale(0.97);
+}
+
+/* ---------- 阅读区 ---------- */
+
+.viewer {
+    position: relative;
+    flex: 1 1 auto;
+    overflow: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    background-color: var(--bg);
+    background-image: linear-gradient(180deg, #eef3f9 0%, #e6edf5 100%);
+    scrollbar-color: #b9c9da transparent;
+}
+
+.viewer::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.viewer::-webkit-scrollbar-thumb {
+    background: #c3d1e0;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background-clip: content-box;
+}
+
+.pages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: max-content;
+    min-width: 100%;
+    padding: 22px var(--gutter, 24px) calc(40px + env(safe-area-inset-bottom));
+}
+
+.page {
+    position: relative;
+    flex: none;
+    width: 600px;
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(28, 52, 81, 0.18), 0 10px 26px rgba(28, 52, 81, 0.1);
+}
+
+/* 未渲染完成时的骨架屏 */
+.page:not(.rendered):not(.failed)::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, #ffffff 20%, #f2f6fb 40%, #ffffff 60%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s linear infinite;
+}
+
+.page.failed::after {
+    content: "本页渲染失败";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fbfdff;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.page-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.page.rendered .page-canvas {
+    opacity: 1;
+}
+
+@keyframes shimmer {
+    from {
+        background-position: 150% 0;
+    }
+
+    to {
+        background-position: -50% 0;
+    }
+}
+
+/* ---------- 加载 / 错误提示 ---------- */
+
+.loading,
+.error {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 24px;
+    text-align: center;
+    background: var(--bg);
+}
+
+.loading p,
+.error p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.loading-progress {
+    min-height: 1.2em;
+    font-size: 12px !important;
+    color: #8ba0b6 !important;
+}
+
+.loading-progress a {
+    color: var(--blue);
+}
+
+.spinner {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 3px solid #cddcec;
+    border-top-color: var(--blue);
+    animation: spin 0.85s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.error-title {
+    font-size: 16px !important;
+    font-weight: 600;
+    color: var(--ink) !important;
+}
+
+.noscript {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: var(--bg);
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.noscript a {
+    color: var(--blue);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ---------- 手机适配 ---------- */
+
+@media (max-width: 720px) {
+    .toolbar {
+        gap: 6px;
+        padding: calc(8px + env(safe-area-inset-top)) 12px 8px;
+    }
+
+    .brand {
+        gap: 8px;
+    }
+
+    .brand h1 {
+        font-size: 15px;
+    }
+
+    .brand-sub {
+        display: none;
+    }
+
+    .bar-tools {
+        flex: 1 1 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+        margin-left: 0;
+    }
+
+    .tool-btn {
+        width: 34px;
+        height: 34px;
+        background: #eff4fa;
+    }
+
+    .page-info {
+        min-width: 58px;
+        font-size: 12.5px;
+    }
+
+    .zoom-info {
+        min-width: 42px;
+    }
+
+    .text-btn {
+        font-size: 12px;
+        padding: 5px 6px;
+    }
+
+    .divider {
+        display: none;
+    }
+
+    .download-btn {
+        padding: 7px 12px;
+        font-size: 12.5px;
+    }
+
+    .pages {
+        gap: 14px;
+        padding-top: 14px;
+    }
+}
+
+@media (max-width: 380px) {
+    .download-label {
+        display: none;
+    }
+
+    .zoom-info {
+        min-width: 36px;
+    }
+
+    .text-btn {
+        font-size: 11.5px;
+    }
+}
